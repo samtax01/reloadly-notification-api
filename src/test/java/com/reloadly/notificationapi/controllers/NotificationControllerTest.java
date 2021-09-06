@@ -2,7 +2,6 @@ package com.reloadly.notificationapi.controllers;
 
 import com.reloadly.notificationapi.Seeder;
 import com.reloadly.notificationapi.helpers.Response;
-import com.reloadly.notificationapi.repositories.interfaces.INotificationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,7 +58,7 @@ public class NotificationControllerTest {
     void errorOnInvalidEmail(){
         // Arrange
         var emailRequest = Seeder.getEmailRequest();
-        emailRequest.setToEmail("john.doe");
+        emailRequest.setTo("john.doe");
 
         // Act
         webTestClient
