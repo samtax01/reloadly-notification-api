@@ -9,28 +9,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import reactor.test.StepVerifier;
+
 import java.util.Objects;
 
 @Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class NotificationRepositoryTest {
+public class EmailNotificationRepositoryTest {
 
     @Autowired
-    private NotificationRepository emailNotificationRepository;
+    private EmailNotificationRepository emailNotificationRepository;
 
     @MockBean
     private IEmailNotificationRepository iEmailNotificationRepository;
 
 
+
     @Test
-    void canSendNotification() throws CustomException {
+    void canSendEmailNotification() throws CustomException {
         // Arrange
         // Act
         var data = Seeder.getEmailRequest();
-        var notification = emailNotificationRepository.create(data);
+        var notification = emailNotificationRepository.sendEmail(data);
 
         StepVerifier
-                .create(data)
+                .create(notification)
                 .expectNextMatches(response ->
                         // Assert
                         !Objects.isNull(response))

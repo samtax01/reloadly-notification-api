@@ -17,7 +17,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 
 @Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class NotificationControllerTest {
+public class EmailNotificationControllerTest {
 
 
     @Autowired
@@ -39,7 +39,7 @@ public class NotificationControllerTest {
         // Act
         webTestClient
                 .post()
-                .uri("/api/v1/notifications")
+                .uri("/api/v1/notification/emails")
                 .body(BodyInserters.fromValue(Seeder.getEmailRequest()))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .exchange()
@@ -64,7 +64,7 @@ public class NotificationControllerTest {
         // Act
         webTestClient
                 .post()
-                .uri("/api/v1/notifications")
+                .uri("/api/v1/notification/emails")
                 .body(BodyInserters.fromValue(emailRequest))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .exchange()

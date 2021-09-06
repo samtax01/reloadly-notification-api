@@ -17,7 +17,7 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         var specConfig = new OpenAPI()
-                .info(new Info().title("Transaction API").version("1.0.0"))
+                .info(new Info().title("Notification API").version("1.0.0"))
                 .addSecurityItem(new SecurityRequirement().addList("Authorization"));
         enableAuthorization(specConfig);
         return specConfig;
