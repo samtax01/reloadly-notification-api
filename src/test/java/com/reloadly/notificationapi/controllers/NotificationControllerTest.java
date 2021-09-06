@@ -2,6 +2,7 @@ package com.reloadly.notificationapi.controllers;
 
 import com.reloadly.notificationapi.Seeder;
 import com.reloadly.notificationapi.helpers.Response;
+import com.reloadly.notificationapi.repositories.interfaces.IEmailNotificationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +24,7 @@ public class NotificationControllerTest {
     private WebTestClient webTestClient;
 
     @MockBean
-    private INotificationRepository iNotificationRepository;
+    private IEmailNotificationRepository iNotificationRepository;
 
     @BeforeEach
     public void setUp() {
