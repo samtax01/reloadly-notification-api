@@ -8,6 +8,11 @@ This API is responsible for Sending Email and SMS Notification to customer.
 - JUnit
 
 
+### Running the application locally
+- mvn clean package (To reinstall plugins)
+- mvn spring-boot:run (To start the project)
+
+
 ### Email Notification Request:
 ```json
 {
