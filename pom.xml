@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.reloadly</groupId>
-	<artifactId>transaction-api</artifactId>
+	<artifactId>notification-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>transaction-api</name>
-	<description>Record Transaction Information</description>
+	<name>notification-api</name>
+	<description>Send Notification via Email or SMS</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
