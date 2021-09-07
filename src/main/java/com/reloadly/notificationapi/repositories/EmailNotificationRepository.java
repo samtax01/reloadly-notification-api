@@ -1,5 +1,6 @@
 package com.reloadly.notificationapi.repositories;
 
+import com.reloadly.notificationapi.configs.StaticData;
 import com.reloadly.notificationapi.enums.NotificationStatus;
 import com.reloadly.notificationapi.helpers.CustomException;
 import com.reloadly.notificationapi.models.EmailNotification;
@@ -9,6 +10,8 @@ import com.reloadly.notificationapi.repositories.interfaces.IEmailNotificationRe
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
@@ -19,16 +22,16 @@ import java.util.stream.Collectors;
 @Repository
 public class EmailNotificationRepository {
 
-    @Value("${api.mail}")
-    private String mailApiLink;
 
     private final IEmailNotificationRepository iEmailNotificationRepository;
     private final ModelMapper modelMap;
+    private final JavaMailSender javaMailSender;
 
 
-    public EmailNotificationRepository(IEmailNotificationRepository iEmailNotificationRepository, ModelMapper modelMap) {
+    public EmailNotificationRepository(IEmailNotificationRepository iEmailNotificationRepository, ModelMapper modelMap, JavaMailSender javaMailSender) {
         this.iEmailNotificationRepository = iEmailNotificationRepository;
         this.modelMap = modelMap;
+        this.javaMailSender = javaMailSender;
     }
 
 
@@ -37,6 +40,7 @@ public class EmailNotificationRepository {
      */
     public Mono<EmailResponse> sendEmail(EmailRequest request) throws CustomException{
         var email = modelMap.map(request, EmailNotification.class);
+        log.info("Email request received {}", email);
 
         try{
             sendNotificationEmail(email);
@@ -68,13 +72,20 @@ public class EmailNotificationRepository {
      */
     private void sendNotificationEmail(EmailNotification request){
         try{
-
+            SimpleMailMessage mail = new SimpleMailMessage();
+            mail.setFrom(StaticData.defaultNotificationEmail);
+            mail.setTo(request.getTo());
+            mail.setSubject(request.getSubject());
+            mail.setText(request.getBody());
+            javaMailSender.send(mail);
 
             //HttpRequest.make(mailApiLink, HttpMethod.POST, emailRequest, String.class).subscribe( x->log.info("Email sent successfully. " + x) );
         }catch (Exception ex){
             log.error("Unable to send email. " + ex.getMessage());
+            throw ex;
         }
     }
+
 
 
 }

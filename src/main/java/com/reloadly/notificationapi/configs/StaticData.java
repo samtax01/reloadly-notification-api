@@ -8,4 +8,6 @@ public class StaticData {
     public static String transactionNotFound = "Transaction not found";
 
     public static String invalidUser = "Invalid Authorisation. Token not match with user credential. Expecting email {email}";
+
+    public static String defaultNotificationEmail = "notification@reloadly.com";
 }

@@ -12,7 +12,9 @@ import com.reloadly.notificationapi.repositories.interfaces.IEmailNotificationRe
 import com.reloadly.notificationapi.repositories.interfaces.ISmsNotificationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
@@ -40,6 +42,8 @@ public class SmsNotificationRepository {
      */
     public Mono<SmsResponse> sendSms(SmsRequest request) throws CustomException{
         var sms = modelMap.map(request, SmsNotification.class);
+        log.info("SMS request received {}", sms);
+
         try{
             sendNotificationSms(sms);
             sms.setStatus(NotificationStatus.SENT);

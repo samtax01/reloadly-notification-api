@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import reactor.util.annotation.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -24,11 +23,6 @@ public class EmailNotification {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Nullable
-    @Email
-    @Column(length = 50)
-    private String from;
-
     @NotNull
     @Email
     @Column(length = 50)
@@ -45,8 +39,10 @@ public class EmailNotification {
     @Enumerated(EnumType.STRING)
     private NotificationStatus status;
 
+    @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt = LocalDateTime.now();
 
 }

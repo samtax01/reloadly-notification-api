@@ -39,7 +39,7 @@ public class EmailNotificationControllerTest {
         // Act
         webTestClient
                 .post()
-                .uri("/api/v1/notification/emails")
+                .uri("/api/v1/notification/email")
                 .body(BodyInserters.fromValue(Seeder.getEmailRequest()))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .exchange()
@@ -64,7 +64,7 @@ public class EmailNotificationControllerTest {
         // Act
         webTestClient
                 .post()
-                .uri("/api/v1/notification/emails")
+                .uri("/api/v1/notification/email")
                 .body(BodyInserters.fromValue(emailRequest))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .exchange()

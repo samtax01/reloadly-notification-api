@@ -16,11 +16,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class EmailRequest {
 
-    @Nullable
-    @Email
-    @Column(length = 50)
-    private String from; //notification@reloadly.com
-
     @NotNull
     @Email
     @Column(length = 50)

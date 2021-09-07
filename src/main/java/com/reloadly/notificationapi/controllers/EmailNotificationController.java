@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/notification/emails")
+@RequestMapping("/api/v1/notification/email")
 public class EmailNotificationController {
 
     private final EmailNotificationRepository repository;

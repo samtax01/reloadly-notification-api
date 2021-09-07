@@ -10,7 +10,6 @@ public class Seeder {
         return EmailRequest
                 .builder()
                 .to("hello@samsonoyetola.com")
-                .from("notification@reloadly.com")
                 .subject("Hello World")
                 .body("Can you get this mail")
                 .build();
