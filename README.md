@@ -63,17 +63,21 @@ Sms notification response
 }
 ```
 
-### Other Links:
+## Other Links:
 
-#### Customer Account API
+### Customer Account API
 > **Github**: https://github.com/samtax01/reloadly-customer-account
+
+> **Heroku**: https://reloadly-quiz-customer-api.herokuapp.com/swagger-ui.html
 
 
 #### Transaction API
 > **Github**: https://github.com/samtax01/reloadly-transaction-api
 
+> **Heroku**: https://reloadly-quiz-transaction-api.herokuapp.com/swagger-ui.html
 
 #### Notification API
 > **Github**: https://github.com/samtax01/reloadly-notification-api
 
+> **Heroku**: https://reloadly-quiz-notification-api.herokuapp.com/swagger-ui.html
 
