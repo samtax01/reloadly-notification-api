@@ -4,7 +4,7 @@ This API is responsible for Sending Email and SMS Notification to customer.
 
 ### This project is created using
 - Java (Spring Boot)
-- Accessing Data with JPA
+- In-Memory Database with JPA
 - JUnit
 
 
